@@ -26,5 +26,10 @@ module Mogli
     has_association :likes, "Page"
     has_association :home, "Post"
     has_association :accounts, "Page"
+
+    def post_to_wall(post)
+      client.post("#{id}/feed", nil, post.to_hash)
+    end
+
   end
 end
